@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: process.env.RDS_HOSTNAME || 'bootcamp-day2.c3aqyhuli2gx.ap-southeast-2.rds.amazonaws.com',
+    host: process.env.RDS_HOSTNAME || 'database-1.ccv4n4im9zdq.ap-southeast-2.rds.amazonaws.com',
     user: process.env.RDS_USERNAME || 'admin',
-    password: process.env.RDS_PASSWORD || 'tottigol',
+    password: process.env.RDS_PASSWORD || 'bootcamp',
     port: process.env.RDS_PORT || 3306,
-    database: "bootcampday2"
+    database: "bootcampusers"
 });
 
 let createTable = "CREATE TABLE Posts ( userId varchar(255), time DATE,content varchar(255) );"

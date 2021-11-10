@@ -8,7 +8,7 @@ var calculatorRouter = require('./routes/calculatorRoute');
 // var userRoute = require('./routes/userRoute')
 var awsUserRoute = require('./routes/awsUserRoute')
 var timelineRoute = require('./routes/timelineRoute')
-app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/build'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
@@ -31,6 +31,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   // res.sendFile((__dirname+'/404.html'));
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '/build', 'index.html'));
 });
 
 var port = process.env.PORT || 3000;
